@@ -20,5 +20,8 @@ function mintLicense(address _to, string memory _tokenURI) external onlyOwner {
 
         emit LicenseMinted(_to, tokenId, _tokenURI);
     }
-
+function setTokenURI(uint256 _tokenId, string memory _tokenURI) external onlyOwner {
+        require(_exists(_tokenId), "Token does not exist");
+        _setTokenURI(_tokenId, _tokenURI);
+    }
 }
