@@ -11,5 +11,14 @@ contract ContentLicense is ERC721, Ownable {
     event LicenseMinted(address indexed owner, uint256 indexed tokenId, string tokenURI);
 
     constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {}
+function mintLicense(address _to, string memory _tokenURI) external onlyOwner {
+        uint256 tokenId = nextTokenId;
+        nextTokenId++;
+
+        _safeMint(_to, tokenId);
+        _setTokenURI(tokenId, _tokenURI);
+
+        emit LicenseMinted(_to, tokenId, _tokenURI);
+    }
 
 }
