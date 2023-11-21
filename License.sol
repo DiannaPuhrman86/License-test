@@ -24,4 +24,8 @@ function setTokenURI(uint256 _tokenId, string memory _tokenURI) external onlyOwn
         require(_exists(_tokenId), "Token does not exist");
         _setTokenURI(_tokenId, _tokenURI);
     }
+function getTokenURI(uint256 _tokenId) external view returns (string memory) {
+        require(_exists(_tokenId), "Token does not exist");
+        return tokenURIs[_tokenId];
+    }
 }
